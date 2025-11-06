@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginScreen.css';
@@ -22,7 +21,6 @@ export default function LoginScreen() {
     }
   };
 
-
   return (
     <div className="login-bg">
       <BackgroundLines />
@@ -30,8 +28,7 @@ export default function LoginScreen() {
         <div className="card-inner">
           <img src={logo} alt="BAE logo" className="center-logo" />
           <WelcomeFrame />
-
-          <LoginForm onSubmit={handleLogin} />
+          <LoginForm onSubmit={handleLogin} showRememberForgot={false} />
         </div>
       </div>
     </div>
