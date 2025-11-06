@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signup Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background">
+    <div class="login-container">
+      <div class="icon-circle">
+        <svg height="42" width="42">
+          <circle cx="21" cy="21" r="20" fill="#e5eafc" />
+          <path d="M21 15c2 0 3-1.8 3-4s-1-4-3-4-3 1.8-3 4 1 4 3 4zM21 18c-3.3 0-6 2.7-6 6v2c0 .6.4 1 1 1h10c.6 0 1-.4 1-1v-2c0-3.3-2.7-6-6-6z" fill="#bbc7f5"/>
+        </svg>
+      </div>
+      <h1 class="welcome-title">
+        <span class="welcome-blue">Create</span> <span class="welcome-pink">Account</span>
+      </h1>
+      <p class="subtitle">Sign up to get started</p>
+      <form class="login-form">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your full name" />
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" />
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Create a password" />
+        <label for="confirm">Confirm Password</label>
+        <input type="password" id="confirm" placeholder="Confirm your password" />
+        <div class="conditions-text">
+          <input type="checkbox" id="terms" />
+          <label for="terms" style="font-weight:400;font-size:0.98rem;color:#888;">I agree to the Terms and Conditions.</label>
+        </div>
+        <button type="submit" class="login-btn">Sign Up</button>
+      </form>
+      <div class="bottom-text">
+        Already have an account? <a href="login.html">Sign in</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

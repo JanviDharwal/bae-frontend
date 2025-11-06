@@ -1,0 +1,149 @@
+.mood-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 6, 23, 0.45);
+  z-index: 1200;
+  padding: 24px;
+}
+
+.mood-panel {
+  width: 600px;
+  max-width: calc(100% - 48px);
+  background: linear-gradient(180deg, rgba(224, 195, 252, 0.95), rgba(142, 197, 252, 0.95));
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.35);
+  color: #fff;
+  text-align: center;
+}
+
+.mood-video {
+  width: 100%;
+  height: 260px;
+  background: #000;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.mood-heading h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mood-sub {
+  margin-top: 10px;
+  opacity: 0.95;
+}
+
+.mood-desc {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
+
+.mood-options {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mood-option {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  text-align: left;
+}
+
+.mo-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.mo-body {
+  flex: 1;
+}
+
+.mo-title {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.mo-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 6px;
+}
+
+.mood-privacy {
+  margin-top: 18px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 700px) {
+  .mood-panel {
+    width: 100%;
+    padding: 18px;
+  }
+  .mood-options {
+    gap: 12px;
+  }
+  .mood-option {
+    padding: 14px;
+  }
+}
+
+/* Camera area */
+.camera-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.camera-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.camera-actions .btn {
+  padding: 8px 12px;
+}
+
+.analysis-canvas {
+  display: none;
+}
+
+.mood-panel.enter {
+  animation: popIn 280ms cubic-bezier(.2, .9, .2, 1);
+}
+
+@keyframes popIn {
+  from {
+    transform: translateY(6px) scale(.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}

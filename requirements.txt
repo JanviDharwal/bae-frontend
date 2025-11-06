@@ -1,0 +1,6 @@
+# This project uses Node.js dependencies (managed by package.json)
+# No Python dependencies are required for the frontend.
+# Frontend built with React + Vite.
+
+# For reference:
+# Run 'npm install' to install all required frontend packages.
