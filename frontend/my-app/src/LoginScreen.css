@@ -3,7 +3,7 @@
   --card-radius: 40px;
 }
 
-/* 🌈 Background */
+/*  Background */
 .login-bg {
   min-height: 100vh;
   width: 100vw;
@@ -17,12 +17,14 @@
   font-family: Inter, system-ui, 'Segoe UI', Arial;
   z-index: 0;
   overflow: hidden;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* 💳 Login Card */
+/*  Login Card */
 .login-card {
-  width: var(--card-width);
-  max-width: 95vw;
+  width: 100%;
+  max-width: var(--card-width);
   min-height: 600px;
   box-sizing: border-box;
   border: 2px solid #93c7fc;
@@ -33,14 +35,16 @@
   flex-direction: column; 
   align-items: center; 
   justify-content: center;
-  padding: 50px 0;
+  padding: 50px 20px;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   position: relative; 
   z-index: 2;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-/* 🧩 Inner Layout */
+/*  Inner Layout */
 .card-inner {
   width: 90%;
   background: linear-gradient(175deg, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.01) 100%);
@@ -50,9 +54,10 @@
   display: flex; 
   flex-direction: column; 
   align-items: center;
+  box-sizing: border-box;
 }
 
-/* 🌟 Sign In Heading */
+/*  Sign In Heading */
 .signin-text {
   text-align: center;
   font-size: 2rem;
@@ -61,7 +66,7 @@
   margin: 20px 0;
 }
 
-/* 🪄 Logo */
+/*  Logo */
 .center-logo {
   width: 110px;
   height: auto;
@@ -69,7 +74,7 @@
   margin: 0 auto 20px auto;
 }
 
-/* ✨ Titles */
+/*  Titles */
 .title {
   text-align: center;
   font-size: 2.5rem;
@@ -89,7 +94,7 @@
   font-size: 1.1rem;
 }
 
-/* 📝 Form Styling */
+/*  Form Styling */
 .form {
   width: 80%;
   min-width: 320px;
@@ -97,7 +102,7 @@
   text-align: left;
 }
 
-/* 📋 Fields */
+/*  Fields */
 .field {
   margin-bottom: 16px;
   width: 100%;
@@ -129,41 +134,42 @@
   color: #888; 
 }
 
-/* 🔐 Remember Me & Forgot Password */
-.form-remember-forgot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  font-size: 0.95rem;
-  color: #fff;
-}
-
-.form-remember {
-  margin-right: 15px;
-}
-
-/* 🎯 Button */
+/* Button */
 .btn {
-  width: 100%; 
-  height: 42px; 
-  border-radius: 10px;
+  width: 100%;
+  height: 46px;
+  border-radius: 12px;
   border: none;
-  background: linear-gradient(90deg,#e8f3ff 40%,#f5d6fc 100%);
-  margin-top: 16px;
+  background: linear-gradient(90deg, #4361ee 0%, #5a67ff 100%);
+  margin-top: 18px;
   cursor: pointer;
   font-weight: 700;
-  color: #181818;
+  color: #ffffff;
   font-size: 1.1rem;
-  box-shadow: 0 2px 8px rgba(120,170,230,0.14);
-  transition: background 0.2s ease;
+  letter-spacing: 0.4px;
+  box-shadow: 0 4px 14px rgba(67, 97, 238, 0.25);
+  transition: all 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
 }
 
+/* ✨ Hover and Active States */
 .btn:hover {
-  background: linear-gradient(90deg,#f3f8ff 20%,#fbe5ff 100%);
+  background: linear-gradient(90deg, #3a56d1 0%, #5058e9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(67, 97, 238, 0.35);
 }
 
-/* 🔄 Signup Toggle */
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(67, 97, 238, 0.25);
+}
+
+/*  Signup Toggle */
 .signup {
   text-align: center;
   margin-top: 20px;
@@ -179,9 +185,9 @@
   font-weight: 600;
 }
 
-/* 📱 Responsive */
+/*  Responsive */
 @media (max-width: 480px) {
   .title { font-size: 2rem; }
   .subtitle { font-size: 1rem; }
-  .login-card { width: 90%; min-height: 520px; }
+  .login-card { width: 100%; min-height: 520px; padding: 40px 15px; }
 }

@@ -63,8 +63,8 @@ export default function Dashboard() {
         </nav>
         <div className="profile">
           <div className="profile-meta">
-            <div className="profile-name">Navneet Kaur</div>
-            <div className="profile-link">UI/UX Designer</div>
+            <div className="profile-name">USER</div>
+            
           </div>
           <button className="logout" onClick={handleLogout}>Logout</button>
         </div>
