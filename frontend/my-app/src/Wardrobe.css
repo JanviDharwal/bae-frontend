@@ -1,0 +1,168 @@
+.wardrobe-page-root {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(224, 195, 252, 1) 11%,
+    rgba(142, 197, 252, 1) 68%,
+    rgba(102, 126, 234, 1) 100%
+  );
+}
+
+/* Sidebar replacement */
+.sidebar-space {
+  width: 280px;
+  flex: 0 0 280px;
+}
+
+/* Main content */
+.wardrobe-main {
+  flex: 1;
+  padding: 48px 40px;
+}
+
+/* Inner container */
+.wardrobe-inner {
+  max-width: 1142px;
+  margin: 0 auto;
+}
+
+/* Header section */
+.wardrobe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wardrobe-header h2 {
+  font-size: 32px;
+  margin: 0;
+  color: #fff;
+}
+
+.wardrobe-header .muted {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 6px;
+}
+
+/* Buttons in header */
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn.add {
+  background: linear-gradient(
+    180deg,
+    rgba(224, 195, 252, 0.35),
+    rgba(142, 197, 252, 0.35)
+  );
+}
+
+/* Search bar */
+.search-row {
+  margin-top: 18px;
+}
+
+.search-input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px 12px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-input input {
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+}
+
+/* Tags row */
+.tags-row {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tag.active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Cards grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card .image {
+  height: 252px;
+  background: linear-gradient(
+    180deg,
+    rgba(224, 195, 252, 0.2),
+    rgba(142, 197, 252, 0.2)
+  );
+}
+
+.card-body {
+  padding: 12px;
+}
+
+.card-title {
+  color: #fff;
+  font-size: 14px;
+}
+
+.card-meta {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sidebar-space {
+    display: none;
+  }
+
+  .wardrobe-main {
+    padding: 24px;
+  }
+}
