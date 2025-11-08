@@ -82,7 +82,7 @@ export default function MoodPrompt({ onAutoDetect, onManual, onClose }) {
       setMood(mood);
       onAutoDetect?.(mood);
     } catch (err) {
-      console.error('Error while connecting to Flask backend:', err);
+      console.error('Error connecting to Flask backend:', err);
       const mood = fallbackMood();
       setMood(mood);
       onAutoDetect?.(mood);
