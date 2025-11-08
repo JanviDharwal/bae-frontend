@@ -32,9 +32,9 @@ export default function MoodPrompt({ onAutoDetect, onManual, onClose }) {
       setCameraActive(true);
       setErrorMsg('');
     } catch (err) {
-      console.error(err);
+      console.error('Camera Error:', err);
       setErrorMsg('Camera Blocked or Unavailable');
-      alert('Please allow webcam access in browser settings.');
+      alert('Please allow webcam access in your browser settings.');
     }
   }
 
@@ -47,14 +47,17 @@ export default function MoodPrompt({ onAutoDetect, onManual, onClose }) {
   }
 
   function fallbackMood() {
-    const ctx = canvasRef.current.getContext('2d');
-    ctx.drawImage(videoRef.current, 0, 0);
+    if (videoRef.current && canvasRef.current) {
+      const ctx = canvasRef.current.getContext('2d');
+      ctx.drawImage(videoRef.current, 0, 0);
+    }
     return 'neutral';
   }
 
   async function captureAndSend() {
-    setProcessing(true);
+    if (!videoRef.current || !canvasRef.current) return;
 
+    setProcessing(true);
     const canvas = canvasRef.current;
     const video = videoRef.current;
 
@@ -64,19 +67,22 @@ export default function MoodPrompt({ onAutoDetect, onManual, onClose }) {
     const base64 = canvas.toDataURL('image/jpeg', 0.9);
 
     try {
-      // ✅ Fixed backend connection URL
-      const res = await fetch('http://127.0.0.1:5000/predict', {
+      const res = await fetch('https://bae-bringing-aesthetics-to-emotions.onrender.com/predict', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ image: base64 }),
       });
 
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
       const data = await res.json();
+      console.log('Server Response:', data);
+
       const mood = data?.mood || fallbackMood();
       setMood(mood);
       onAutoDetect?.(mood);
     } catch (err) {
-      console.error("Error connecting to Flask backend:", err);
+      console.error('Error connecting to Flask backend:', err);
       const mood = fallbackMood();
       setMood(mood);
       onAutoDetect?.(mood);
@@ -92,11 +98,11 @@ export default function MoodPrompt({ onAutoDetect, onManual, onClose }) {
       <div className="mood-panel">
         <h3>Detect Your Mood</h3>
 
-        {/* Webcam Video */}
+        {/* Webcam */}
         <video ref={videoRef} className="mood-video" autoPlay playsInline muted />
 
         <div className="camera-actions">
-          <button className="btn" onClick={captureAndSend}>
+          <button className="btn" onClick={captureAndSend} disabled={processing}>
             {processing ? 'Analyzing...' : 'Capture & Detect'}
           </button>
           <button className="btn" onClick={stopCamera}>Cancel</button>
@@ -108,6 +114,8 @@ export default function MoodPrompt({ onAutoDetect, onManual, onClose }) {
 
         {/* Hidden canvas for image capture */}
         <canvas ref={canvasRef} style={{ display: 'none' }} />
+
+        {errorMsg && <p className="error-text">{errorMsg}</p>}
       </div>
     </div>
   );
