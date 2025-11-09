@@ -5,39 +5,25 @@ import logo from './images/logo.jpg';
 
 export default function SignupScreen() {
   const navigate = useNavigate();
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState('');
 
-  const handleSignup = async (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
-    setError('');
-    if (!name || !email || !password) {
-      setError('Please fill in all fields');
-      return;
-    }
-    setLoading(true);
-    try {
-      const res = await fetch('http://localhost:5000/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, name }),
-      });
-      const json = await res.json();
-      if (res.ok && json.success) {
-        alert(json.message || 'Signup successful');
-        navigate('/');
-      } else {
-        setError(json.message || 'Signup failed');
-      }
-    } catch (err) {
-      console.error('Signup error', err);
-      setError('Server error');
-    } finally {
-      setLoading(false);
-    }
+
+    // Get form values
+    const name = e.target[0].value;
+    const email = e.target[1].value;
+    const password = e.target[2].value;
+
+    console.log('Mock Signup submitted:', { name, email, password });
+
+    // Optional: store in localStorage to simulate login
+    localStorage.setItem('mockUser', JSON.stringify({ name, email }));
+
+    // Show success message
+    alert(`Signup successful! Welcome, ${name} 💜`);
+
+    // Redirect to login page
+    navigate('/');
   };
 
   return (
@@ -45,13 +31,11 @@ export default function SignupScreen() {
       <div className="login-card centered">
         <div className="card-inner">
           <img src={logo} alt="BAE logo" className="center-logo" />
-          {/* Title */}
           <h1 className="title">Create Account</h1>
           <p className="subtitle">
             Join BAE and experience emotion-driven design 💜
           </p>
 
-          {/* Signup Form */}
           <form className="form" onSubmit={handleSignup}>
             <div className="field">
               <label className="label-text">Name</label>
@@ -59,8 +43,6 @@ export default function SignupScreen() {
                 type="text"
                 className="input"
                 placeholder="Your Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
@@ -71,8 +53,6 @@ export default function SignupScreen() {
                 type="email"
                 className="input"
                 placeholder="Your Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -83,16 +63,13 @@ export default function SignupScreen() {
                 type="password"
                 className="input"
                 placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
 
-            <button type="submit" className="btn" disabled={loading}>
-              {loading ? 'Signing up…' : 'Sign Up'}
+            <button type="submit" className="btn">
+              Sign Up
             </button>
-            {error && <div style={{ color: 'crimson', marginTop: 8 }}>{error}</div>}
 
             <div className="signup">
               Already have an account?
